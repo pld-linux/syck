@@ -11,7 +11,6 @@ Source0:	http://rubyforge.org/frs/download.php/1371/%{name}-%{version}.tar.gz
 # Source0-md5:	8071e1e2ee255576f025b4cef8feee62
 URL:		http://whytheluckystiff.net/syck/
 BuildRequires:	python-devel >= 1:2.3
-BuildRequires:	rpm-pythonprov
 %pyrequires_eq	python-modules
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
