@@ -31,11 +31,11 @@ Syckowi, poniewa¿ tak skupia siê na w³asnym zadaniu, ¿e zabije, je¶li
 wejdziemy mu w drogê.
 
 %package -n python-syck
-Summary:        Python bindings for syck library
-Summary(pl):    Pythonowy interfejes do biblioteki syck
-Group:          Libraries/Python
-#Requires:       %{name} = %{version}-%{release}
-%pyrequires_eq  python
+Summary:	Python bindings for syck library
+Summary(pl):	Pythonowy interfejes do biblioteki syck
+Group:		Libraries/Python
+#Requires:	%{name} = %{version}-%{release}
+%pyrequires_eq	python
 
 %description -n python-syck
 Python bindings for syck library.
