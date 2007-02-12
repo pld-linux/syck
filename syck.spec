@@ -1,7 +1,7 @@
 #
 # TODO: php and others bindings
 Summary:	Library for reading and writing YAML in scripting languages
-Summary(pl):	Biblioteka do odczytu i zapisu YAML-a w jêzykach skryptowych
+Summary(pl.UTF-8):   Biblioteka do odczytu i zapisu YAML-a w jÄ™zykach skryptowych
 Name:		syck
 Version:	0.45
 Release:	1
@@ -22,17 +22,17 @@ directly in your language's symbol table. This means speed. This means
 power. This means Do not disturb Syck because it is so focused on the
 task at hand that it will slay you mortally if you get in its way.
 
-%description -l pl
+%description -l pl.UTF-8
 Syck to rozszerzenie do szybkiego odczytu i zapisu YAML-a w
-popularnych jêzykach skryptowych. Po wczytaniu YAML-a Syck zapisuje
-dane bezpo¶rednio do tablicy symboli u¿ywanego jêzyka. To oznacza
-szybko¶æ. To oznacza potêgê. To oznacza, ¿e nie nale¿y przeszkadzaæ
-Syckowi, poniewa¿ tak skupia siê na w³asnym zadaniu, ¿e zabije, je¶li
-wejdziemy mu w drogê.
+popularnych jÄ™zykach skryptowych. Po wczytaniu YAML-a Syck zapisuje
+dane bezpoÅ›rednio do tablicy symboli uÅ¼ywanego jÄ™zyka. To oznacza
+szybkoÅ›Ä‡. To oznacza potÄ™gÄ™. To oznacza, Å¼e nie naleÅ¼y przeszkadzaÄ‡
+Syckowi, poniewaÅ¼ tak skupia siÄ™ na wÅ‚asnym zadaniu, Å¼e zabije, jeÅ›li
+wejdziemy mu w drogÄ™.
 
 %package -n python-syck
 Summary:	Python bindings for syck library
-Summary(pl):	Pythonowy interfejes do biblioteki syck
+Summary(pl.UTF-8):   Pythonowy interfejes do biblioteki syck
 Group:		Libraries/Python
 #Requires:	%{name} = %{version}-%{release}
 %pyrequires_eq	python
@@ -40,7 +40,7 @@ Group:		Libraries/Python
 %description -n python-syck
 Python bindings for syck library.
 
-%description -n python-syck -l pl
+%description -n python-syck -l pl.UTF-8
 Pythonowy interfejs do biblioteki syck.
 
 %prep
