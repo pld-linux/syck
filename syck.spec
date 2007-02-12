@@ -1,7 +1,7 @@
 #
 # TODO: php and others bindings
 Summary:	Library for reading and writing YAML in scripting languages
-Summary(pl.UTF-8):   Biblioteka do odczytu i zapisu YAML-a w językach skryptowych
+Summary(pl.UTF-8):	Biblioteka do odczytu i zapisu YAML-a w językach skryptowych
 Name:		syck
 Version:	0.45
 Release:	1
@@ -32,7 +32,7 @@ wejdziemy mu w drogę.
 
 %package -n python-syck
 Summary:	Python bindings for syck library
-Summary(pl.UTF-8):   Pythonowy interfejes do biblioteki syck
+Summary(pl.UTF-8):	Pythonowy interfejes do biblioteki syck
 Group:		Libraries/Python
 #Requires:	%{name} = %{version}-%{release}
 %pyrequires_eq	python
