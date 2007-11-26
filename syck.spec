@@ -27,13 +27,13 @@ task at hand that it will slay you mortally if you get in its way.
 Syck to rozszerzenie do szybkiego odczytu i zapisu YAML-a w
 popularnych językach skryptowych. Po wczytaniu YAML-a Syck zapisuje
 dane bezpośrednio do tablicy symboli używanego języka. To oznacza
-szybkość. To oznacza potęgę. To oznacza, że nie należy
-przeszkadzać Syckowi, ponieważ tak skupia się na własnym zadaniu,
-że zabije, jeśli wejdziemy mu w drogę.
+szybkość. To oznacza potęgę. To oznacza, że nie należy przeszkadzać
+Syckowi, ponieważ tak skupia się na własnym zadaniu, że zabije, jeśli
+wejdziemy mu w drogę.
 
 %package devel
 Summary:	Header files for syck library
-Summary(pl.UTF-8):	Pliki nag��wkowe biblioteki syck
+Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki syck
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -41,7 +41,7 @@ Requires:	%{name} = %{version}-%{release}
 Header files for syck library.
 
 %description devel -l pl.UTF-8
-Pliki nag��wkowe biblioteki syck.
+Pliki nagłówkowe biblioteki syck.
 
 %package static
 Summary:	Static syck library
