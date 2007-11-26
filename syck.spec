@@ -4,7 +4,7 @@ Name:		syck
 Version:	0.55
 Release:	1
 License:	BSD
-Group:		Development/Libraries
+Group:		Libraries
 Source0:	http://rubyforge.org/frs/download.php/4492/%{name}-%{version}.tar.gz
 # Source0-md5:	a57b7c46d81170b9318e2f384f77910c
 Patch0:		%{name}-shared.patch
@@ -12,8 +12,8 @@ URL:		http://whytheluckystiff.net/syck/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libtool
-BuildRequires:	python-devel >= 1:2.3
-%pyrequires_eq	python-modules
+BuildRequires:	python-devel >= 1:2.5
+BuildRequires:	rpm-pythonprov
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -94,16 +94,12 @@ rm -rf $RPM_BUILD_ROOT
 
 cd ext/python
 python -- setup.py install \
-        --root=$RPM_BUILD_ROOT \
-	--install-purelib=%{py_sitedir} \
-	--install-platlib=%{py_sitescriptdir} \
-	--install-scripts=%{py_sitescriptdir} \
-        --optimize=2
+	--root=$RPM_BUILD_ROOT \
+	--optimize=2
 
-install -d $RPM_BUILD_ROOT%{py_sitedir}
-install $RPM_BUILD_ROOT%{py_sitescriptdir}/syck.so $RPM_BUILD_ROOT%{py_sitedir}
-
-find $RPM_BUILD_ROOT%{py_sitescriptdir} -name \*.py | xargs rm -f
+install -d $RPM_BUILD_ROOT%{py_sitescriptdir}
+mv $RPM_BUILD_ROOT%{py_sitedir}/{*.py[co],*.egg-info} $RPM_BUILD_ROOT%{py_sitescriptdir}
+find $RPM_BUILD_ROOT%{py_sitedir} -name \*.py | xargs rm -f
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -113,21 +109,25 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README README.BYTECODE RELEASE CHANGELOG tests
-%attr(755,root,root) %{_libdir}/lib*.so.*.*.*
+%doc CHANGELOG COPYING README README.BYTECODE RELEASE tests
+%attr(755,root,root) %{_libdir}/libsyck.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libsyck.so.0
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/lib*.so
-%{_libdir}/lib*.la
-%{_includedir}/*
+%attr(755,root,root) %{_libdir}/libsyck.so
+%{_libdir}/libsyck.la
+%{_includedir}/syck*.h
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/*.a
+%{_libdir}/libsyck.a
 
 %files -n python-syck
 %defattr(644,root,root,755)
 %doc ext/python/tests
-%{py_sitescriptdir}/*
-%{py_sitedir}/*
+%{py_sitescriptdir}/yaml2xml.py[co]
+%{py_sitescriptdir}/ydump.py[co]
+%{py_sitescriptdir}/ypath.py[co]
+%{py_sitescriptdir}/Syck-*.egg-info
+%{py_sitedir}/syck.so
