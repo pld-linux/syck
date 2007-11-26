@@ -9,6 +9,9 @@ Source0:	http://rubyforge.org/frs/download.php/4492/%{name}-%{version}.tar.gz
 # Source0-md5:	a57b7c46d81170b9318e2f384f77910c
 Patch0:		%{name}-shared.patch
 URL:		http://whytheluckystiff.net/syck/
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool
 BuildRequires:	python-devel >= 1:2.3
 %pyrequires_eq	python-modules
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
