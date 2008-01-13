@@ -1,3 +1,4 @@
+%bcond_without	python  # do not compile python bindings
 Summary:	Library for reading and writing YAML in scripting languages
 Summary(pl.UTF-8):	Biblioteka do odczytu i zapisu YAML-a w językach skryptowych
 Name:		syck
@@ -12,8 +13,10 @@ URL:		http://whytheluckystiff.net/syck/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libtool
+%if %{with python}
 BuildRequires:	python-devel >= 1:2.5
 BuildRequires:	rpm-pythonprov
+%endif
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -78,13 +81,16 @@ Pythonowy interfejs do biblioteki syck.
 %{__autoconf}
 %{__autoheader}
 %{__automake}
-%configure
+%configure 
+
 %{__make} \
 	CFLAGS="%{rpmcflags} -fPIC"
 
+%if %{with python}
 cd ext/python
 env CFLAGS="%{rpmcflags} -fPIC" python setup.py build
 cd ..
+%endif
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -92,6 +98,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+%if %{with python}
 cd ext/python
 python -- setup.py install \
 	--root=$RPM_BUILD_ROOT \
@@ -100,6 +107,7 @@ python -- setup.py install \
 install -d $RPM_BUILD_ROOT%{py_sitescriptdir}
 mv $RPM_BUILD_ROOT%{py_sitedir}/{*.py[co],*.egg-info} $RPM_BUILD_ROOT%{py_sitescriptdir}
 find $RPM_BUILD_ROOT%{py_sitedir} -name \*.py | xargs rm -f
+%endif
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -123,6 +131,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{_libdir}/libsyck.a
 
+%if %{with python}
 %files -n python-syck
 %defattr(644,root,root,755)
 %doc ext/python/tests
@@ -131,3 +140,4 @@ rm -rf $RPM_BUILD_ROOT
 %{py_sitescriptdir}/ypath.py[co]
 %{py_sitescriptdir}/Syck-*.egg-info
 %{py_sitedir}/syck.so
+%endif
