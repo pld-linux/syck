@@ -3,7 +3,7 @@ Summary:	Library for reading and writing YAML in scripting languages
 Summary(pl.UTF-8):	Biblioteka do odczytu i zapisu YAML-a w językach skryptowych
 Name:		syck
 Version:	0.55
-Release:	1
+Release:	2
 License:	BSD
 Group:		Libraries
 Source0:	http://rubyforge.org/frs/download.php/4492/%{name}-%{version}.tar.gz
