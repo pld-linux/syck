@@ -3,7 +3,7 @@ Summary:	Library for reading and writing YAML in scripting languages
 Summary(pl.UTF-8):	Biblioteka do odczytu i zapisu YAML-a w językach skryptowych
 Name:		syck
 Version:	0.55
-Release:	3
+Release:	4
 License:	BSD
 Group:		Libraries
 Source0:	http://rubyforge.org/frs/download.php/4492/%{name}-%{version}.tar.gz
@@ -88,7 +88,8 @@ Pythonowy interfejs do biblioteki syck.
 
 %if %{with python}
 cd ext/python
-env CFLAGS="%{rpmcflags} -fPIC" python setup.py build
+CFLAGS="%{rpmcflags} -fPIC"
+%py_build
 cd ..
 %endif
 
@@ -100,12 +101,10 @@ rm -rf $RPM_BUILD_ROOT
 
 %if %{with python}
 cd ext/python
-python -- setup.py install \
-	--root=$RPM_BUILD_ROOT \
-	--optimize=2
+%py_install
 
 install -d $RPM_BUILD_ROOT%{py_sitescriptdir}
-mv $RPM_BUILD_ROOT%{py_sitedir}/{*.py[co],*.egg-info} $RPM_BUILD_ROOT%{py_sitescriptdir}
+%{__mv} $RPM_BUILD_ROOT%{py_sitedir}/{*.py[co],*.egg-info} $RPM_BUILD_ROOT%{py_sitescriptdir}
 find $RPM_BUILD_ROOT%{py_sitedir} -name \*.py | xargs rm -f
 %endif
 
